@@ -1,0 +1,37 @@
+{
+  "facts": [
+    "Estudiante(Ana)",
+    "Estudiante(Luis)",
+    "Profesor(Marta)",
+    "TieneCredencial(Ana)",
+    "TieneCredencial(Marta)",
+    "HorarioNocturno(Hoy)"
+  ],
+  "rules": [
+    {
+      "id": "R_miembro_est",
+      "if": ["Estudiante(x)", "TieneCredencial(x)"],
+      "then": "Miembro(x)"
+    },
+    {
+      "id": "R_miembro_prof",
+      "if": ["Profesor(x)"],
+      "then": "Miembro(x)"
+    },
+    {
+      "id": "R_acceso",
+      "if": ["Miembro(x)", "HorarioNocturno(Hoy)"],
+      "then": "AccesoNoche(x)"
+    },
+    {
+      "id": "R_beca",
+      "if": ["Estudiante(x)", "TieneCredencial(x)"],
+      "then": "Becario(x)"
+    }
+  ],
+  "queries": [
+    "AccesoNoche(Ana)",
+    "AccesoNoche(Luis)",
+    "AccesoNoche(Marta)"
+  ]
+}
